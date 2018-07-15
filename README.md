@@ -120,4 +120,4 @@ it doesn't support specifique type .....
 ------------
 1) add NOT NULL
 2) add auto fill to tableview of qml
-3) 
+
