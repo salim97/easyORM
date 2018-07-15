@@ -1,7 +1,6 @@
-# Cplusplus_Class_To_SQL_Table
-this is easy lib to use ORM with QT and access to data from qml and c++ class, and there is prebuild method like
-saveCurrentRow(), saveAsNewRow(), removeCurrentRow(), ....etc
-i will add more method later ...
+# easyORM
+this is easy library to create an equivalent of C++ class in SQL table ( sqlite3, mysql, ... ) and it allow you to use ORM design pattern, and you can use it from QML side or C++ side or both 
+
 
 # SETUP
 -------
