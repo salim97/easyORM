@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QMetaClassInfo>
 #include <QQmlContext>
-#include <QSqlTableModel>
+#include <QJsonObject>
 
 #include "clients.h"
 #include "mydatabase.h"
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
-qmlRegisterInterface<QSqlTableModel>("QSqlTableModel");
+qmlRegisterInterface<QJsonObject>("QJsonObject");
     MyDatabase myDatabase;
     if(!myDatabase.initSQLITE3()) // you must call this method to make connection with database....
         return 1 ;

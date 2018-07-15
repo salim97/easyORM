@@ -1,6 +1,7 @@
 #ifndef MYGENERALPURPOSE_H
 #define MYGENERALPURPOSE_H
 
+#include <QJsonObject>
 #include <QObject>
 
 #include <QDebug>
@@ -27,7 +28,7 @@ public slots:
     bool saveCurrentRow();
     bool saveAsNewRow();
     int rowCount() ;
-    QString currentRowToJSON();
+    QJsonObject currentRowToJSON();
 private:
     QSqlTableModel *m_tableModel ;
     QObject *obj ;

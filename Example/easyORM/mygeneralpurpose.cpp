@@ -93,7 +93,7 @@ int MyGeneralPurpose::rowCount()
     return m_tableModel->rowCount();
 }
 
-QString MyGeneralPurpose::currentRowToJSON()
+QJsonObject MyGeneralPurpose::currentRowToJSON()
 {
 
     QJsonObject json;
@@ -104,5 +104,6 @@ QString MyGeneralPurpose::currentRowToJSON()
                     QJsonValue::fromVariant(obj->metaObject()->property(i).read(obj)));
     }
     QJsonDocument doc(json);
-    return doc.toJson() ;
+//    return doc.toJson() ;
+    return json ;
 }

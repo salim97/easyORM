@@ -12,8 +12,8 @@ Window {
         for( var i = 0 ; i < clients.rowCount() ; i++ )
         {
             clients.selectRow(i)
-            var tmp = JSON.parse(clients.currentRowToJSON());
-            console.log(tmp.first_name)
+//            var tmp = JSON.parse(clients.currentRowToJSON());
+            console.log(clients.currentRowToJSON().first_name)
         }
     }
     Item {
