@@ -27,7 +27,7 @@ public slots:
     bool saveCurrentRow();
     bool saveAsNewRow();
     int rowCount() ;
-
+    QString currentRowToJSON();
 private:
     QSqlTableModel *m_tableModel ;
     QObject *obj ;

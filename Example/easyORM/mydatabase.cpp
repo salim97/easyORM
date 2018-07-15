@@ -48,7 +48,8 @@ void MyDatabase::createTable(QObject *obj)
         tmp.replace("QDate", "DATE");
         tmp.replace("QDateTime", "DATETIME");
         tmp.replace("bool", "BOOLEAN");
-
+        if(QString(obj->metaObject()->property(i).name()).at(0) == '_')
+            continue;
         columnsList << QString(obj->metaObject()->property(i).name()) +" "+tmp;
 
     }

@@ -1,5 +1,8 @@
 #include "mygeneralpurpose.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
+
 MyGeneralPurpose::MyGeneralPurpose()
 {
     m_tableModel = new QSqlTableModel ;
@@ -88,4 +91,18 @@ bool MyGeneralPurpose::saveAsNewRow()
 int MyGeneralPurpose::rowCount()
 {
     return m_tableModel->rowCount();
+}
+
+QString MyGeneralPurpose::currentRowToJSON()
+{
+
+    QJsonObject json;
+
+    for(int i = obj->metaObject()->propertyOffset(); i < obj->metaObject()->propertyCount(); i++)
+    {
+        json.insert(QString(obj->metaObject()->property(i).name()),
+                    QJsonValue::fromVariant(obj->metaObject()->property(i).read(obj)));
+    }
+    QJsonDocument doc(json);
+    return doc.toJson() ;
 }
