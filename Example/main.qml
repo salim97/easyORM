@@ -11,9 +11,7 @@ Window {
     Component.onCompleted: {
         for( var i = 0 ; i < clients.rowCount() ; i++ )
         {
-            clients.selectRow(i)
-//            var tmp = JSON.parse(clients.currentRowToJSON());
-            console.log(clients.currentRowToJSON().first_name)
+            console.log(clients.setCurrentRow(i).first_name)
         }
     }
     Item {

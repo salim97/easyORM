@@ -1,10 +1,10 @@
 HEADERS += \
     $$PWD/mydatabase.h \
     $$PWD/mypropertyhelper.h \
-    $$PWD/mygeneralpurpose.h
+    $$PWD/easyORM.h
 
 
 SOURCES += \
     $$PWD/mydatabase.cpp \
-    $$PWD/mygeneralpurpose.cpp
+    $$PWD/easyORM.cpp
 

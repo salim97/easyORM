@@ -1,15 +1,15 @@
-#include "mygeneralpurpose.h"
+#include "easyORM.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>
 
-MyGeneralPurpose::MyGeneralPurpose()
+easyORM::easyORM()
 {
     m_tableModel = new QSqlTableModel ;
     m_tableModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 }
 
-MyGeneralPurpose::~MyGeneralPurpose()
+easyORM::~easyORM()
 {
     m_tableModel->clear();
     delete m_tableModel ;
@@ -17,15 +17,15 @@ MyGeneralPurpose::~MyGeneralPurpose()
 }
 
 
-void MyGeneralPurpose::init(QObject *obj)
+void easyORM::init(QObject *obj)
 {
     this->obj = obj ;
     m_tableModel->setTable(obj->metaObject()->className());
     m_tableModel->select();
-    selectRow(0);
+    setCurrentRow(0);
 }
 
-void MyGeneralPurpose::update()
+void easyORM::select()
 {
     m_tableModel->select();
     currentRow = 0 ;
@@ -34,7 +34,7 @@ void MyGeneralPurpose::update()
 
 }
 
-bool MyGeneralPurpose::removeCurrentRow()
+bool easyORM::removeCurrentRow()
 {
     m_tableModel->removeRow(currentRow) ;
     if( !m_tableModel->submitAll() )
@@ -43,18 +43,35 @@ bool MyGeneralPurpose::removeCurrentRow()
         return false ;
     }
 
-    selectRow(0);
+    setCurrentRow(0);
     return true ;
 }
 
-void MyGeneralPurpose::selectRow(int index)
+bool easyORM::removeAllRows()
+{
+    //TODO: raplce remove all with query
+    for(int i = 0 ; i < m_tableModel->rowCount() ; i++)
+        m_tableModel->removeRow(i) ;
+
+    if( !m_tableModel->submitAll() )
+    {
+        qDebug() << "insertion erreur: " << m_tableModel->lastError().text() ;
+        return false ;
+    }
+
+    setCurrentRow(0);
+    return true ;
+}
+
+QJsonObject easyORM::setCurrentRow(int index)
 {
     currentRow = index ;
     for(int i = obj->metaObject()->propertyOffset(); i < obj->metaObject()->propertyCount(); i++)
         obj->setProperty(obj->metaObject()->property(i).name(), m_tableModel->record(currentRow).value(i)) ;
+   return currentRowToJSON() ;
 }
 
-bool MyGeneralPurpose::saveCurrentRow()
+bool easyORM::update()
 {
 
     for(int i = obj->metaObject()->propertyOffset(); i < obj->metaObject()->propertyCount(); i++)
@@ -69,7 +86,7 @@ bool MyGeneralPurpose::saveCurrentRow()
     return true ;
 }
 
-bool MyGeneralPurpose::saveAsNewRow()
+bool easyORM::insert()
 {
     currentRow = m_tableModel->rowCount() ;
     m_tableModel->insertRow(currentRow);
@@ -88,22 +105,19 @@ bool MyGeneralPurpose::saveAsNewRow()
 
 }
 
-int MyGeneralPurpose::rowCount()
+int easyORM::rowCount()
 {
     return m_tableModel->rowCount();
 }
 
-QJsonObject MyGeneralPurpose::currentRowToJSON()
+QJsonObject easyORM::currentRowToJSON()
 {
-
     QJsonObject json;
-
     for(int i = obj->metaObject()->propertyOffset(); i < obj->metaObject()->propertyCount(); i++)
     {
         json.insert(QString(obj->metaObject()->property(i).name()),
                     QJsonValue::fromVariant(obj->metaObject()->property(i).read(obj)));
     }
     QJsonDocument doc(json);
-//    return doc.toJson() ;
     return json ;
 }

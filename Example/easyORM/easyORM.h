@@ -11,22 +11,23 @@
 #include <QSqlRecord>
 #include "mypropertyhelper.h"
 
-class MyGeneralPurpose: public QObject
+class easyORM: public QObject
 {
     Q_OBJECT
-
 public:
-     MyGeneralPurpose();
-    ~MyGeneralPurpose();
+     easyORM();
+    ~easyORM();
 
     void init(QObject *obj) ;
 
 public slots:
-    void update();
+    void select();
     bool removeCurrentRow();
-    void selectRow(int index);
-    bool saveCurrentRow();
-    bool saveAsNewRow();
+    bool removeAllRows();
+    QJsonObject setCurrentRow(int index);
+
+    bool update();
+    bool insert();
     int rowCount() ;
     QJsonObject currentRowToJSON();
 private:

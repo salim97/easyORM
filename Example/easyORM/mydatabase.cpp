@@ -6,23 +6,29 @@ MyDatabase::MyDatabase(QObject *parent) : QObject(parent)
 
 }
 
-bool MyDatabase::initSQLITE3()
+bool MyDatabase::initSQLITE3(QString pathDB)
 {
-    databaseType = "QSQLITE" ;
-    QString databaseName = "database.db";
-    QString databasePath = QDir::toNativeSeparators(QApplication::applicationDirPath()).replace("\\","/") +"/";
-    QString databaseLocation = databasePath + databaseName ;
+    if(pathDB.isEmpty())
+    {
+        databaseType = "QSQLITE" ;
+        QString databaseName = "database.db";
+        QString databasePath = QDir::toNativeSeparators(QApplication::applicationDirPath()).replace("\\","/") +"/";
+        pathDB = databasePath + databaseName ;
+    }
+
+
 
     bool check = QSqlDatabase::isDriverAvailable(databaseType) ;
-    if( !check ) msgCritical("Error", "QSQLITE is not availabe");
+    if( !check ) msgCritical("Error", databaseType+" is not availabe");
 
     myDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    myDatabase.setDatabaseName(databaseLocation);
+    myDatabase.setDatabaseName(pathDB);
 
     bool ok = myDatabase.open();
     if ( !ok ) msgCritical("Error", myDatabase.lastError().text());
     return ok ;
 }
+
 
 QStringList MyDatabase::tables()
 {

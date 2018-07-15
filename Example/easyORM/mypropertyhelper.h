@@ -1,6 +1,6 @@
 #pragma once
 #include <QObject>
-//See Gist Comment for description, usage, warnings and license information
+
 #define AUTO_PROPERTY(TYPE, NAME) \
     Q_PROPERTY(TYPE NAME READ NAME WRITE NAME NOTIFY NAME ## Changed ) \
     public: \
@@ -23,5 +23,7 @@
        TYPE m_ ## NAME;
 
 #define INIT_CURD(CLASS_NAME) \
+    private:\
+    Q_OBJECT \
     public:\
         CLASS_NAME() { init(this); }

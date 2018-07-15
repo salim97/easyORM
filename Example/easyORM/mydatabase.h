@@ -16,7 +16,7 @@ class MyDatabase : public QObject
 
 public:
     explicit MyDatabase(QObject *parent = nullptr);
-    bool initSQLITE3();
+    bool initSQLITE3(QString pathDB="");
     void createTable(QObject *obj);
     QMap<QString, QString> _schemaMap;
     bool executeQuery(QString query);
