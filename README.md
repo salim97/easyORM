@@ -141,5 +141,10 @@ it doesn't support specifique type .....
 - method are named same as SQL querys ( select , where, insert, update, ... ) 
 - you should create class one and share pointeur to all your programme, or you can initiale your class and each time you will use it you need to call select(), to sync data between your objects.
 
+# Classes
+---------
+easyORM.h contain CURD function for all child classes ( Create, Update, Read, Delete ) 
+mydatabase.h contain generic function for database, (connecte, getAllTable, disconnecte, makeBackup... )
+mypropertyhelper.h contain macro to make life easy when programing
 
 
