@@ -125,8 +125,8 @@ private:
         }
     }
 ```
-# advantage of
---------------
+# advantage of easyORM
+----------------------
 1. interacte with sql table from C++ or QML using same way .
 2. auto complet when programming .
 3. gerenate schema from C++ class and adapte schema for SQLITE3 or MYSQL .
