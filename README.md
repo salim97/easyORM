@@ -1,10 +1,30 @@
 # easyORM
-this is easy library to create an equivalent of C++ class in SQL table ( sqlite3, mysql, ... ) and it allow you to use ORM design pattern, and you can use it from QML side or C++ side or both 
 
+easyORM is easy library to create an equivalent of C++ class in SQL table ( sqlite3, mysql, ... ) and it allow you to use ORM design pattern, It is completely compatible for use with QML and C++
 
+# Current Status
+
+- Relation between SQL table and C++ Class
+    + [X] Create
+    + [X] Read 
+    + [X] Write
+    + [X] Search
+- Custom
+    + [X] emit signal before inserting data to sql table
+    + [X] emit signal after reading data from sql table
+    + [X] return JSOn Object when selecting row from table
+    
+# TODO
+- QML & C++
+    + [ ] add CRTP to easyORM.h
+    + [ ] add NOT NULL to cloumn
+    + [ ] add auto fill to tableview of qml
+    + [ ] Relation between two table
+    + [ ] return JSOn object after executing custom query
+    
 # SETUP
 -------
-1) first copy easyORM folder to your project direccotry
+1) first copy easyORM folder to your project direcotry
 2) then go to your .pro file and add this two lines
 
 ```
@@ -121,8 +141,5 @@ it doesn't support specifique type .....
 - method are named same as SQL querys ( select , where, insert, update, ... ) 
 - you should create class one and share pointeur to all your programme, or you can initiale your class and each time you will use it you need to call select(), to sync data between your objects.
 
-# TODO LIST
-------------
-1) add NOT NULL
-2) add auto fill to tableview of qml
+
 
