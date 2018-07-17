@@ -95,7 +95,13 @@ private:
         for( var i = 0 ; i < clients.rowCount() ; i++ )
         {
             // clients.setCurrentRow(i) will return JSON object to esy manipulate it from QML side
+            // example 01 : no auto complete
             console.log(clients.setCurrentRow(i).first_name)
+            
+            // example 02: with auto complete
+            clients.setCurrentRow(i)
+            console.log(clients.first_name)
+            console.log(clients.last_name)
         }
     }
 ```
@@ -110,7 +116,7 @@ private:
 
 # Note
 -------
-- easyORM type onvertion support only standard types like( int, QString, float, double, QDate, QDatetime, ... ) 
+- easyORM type convertion support only standard types like( int, QString, float, double, QDate, QDatetime, ... ) 
 it doesn't support specifique type .....
 - method are named same as SQL querys ( select , where, insert, update, ... ) 
 - you should create class one and share pointeur to all your programme, or you can initiale your class and each time you will use it you need to call select(), to sync data between your objects.
