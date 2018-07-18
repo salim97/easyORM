@@ -27,6 +27,7 @@ void easyORM::init(QObject *obj)
 
 void easyORM::select()
 {
+    m_tableModel->setFilter("");
     m_tableModel->select();
     currentRow = 0 ;
     for(int i = obj->metaObject()->propertyOffset(); i < obj->metaObject()->propertyCount(); i++)
@@ -71,6 +72,8 @@ QJsonObject easyORM::setCurrentRow(int index)
    return currentRowToJSON() ;
 }
 
+
+
 bool easyORM::update()
 {
 
@@ -103,6 +106,13 @@ bool easyORM::insert()
     }
     return true ;
 
+}
+
+bool easyORM::where(QString condition)
+{
+    m_tableModel->setFilter(condition);
+    m_tableModel->select();
+    setCurrentRow(0);
 }
 
 int easyORM::rowCount()

@@ -12,6 +12,7 @@ Window {
         for( var i = 0 ; i < clients.rowCount() ; i++ )
         {
             console.log(clients.setCurrentRow(i).first_name)
+//            console.log(clients.setCR(i))
         }
     }
     Item {

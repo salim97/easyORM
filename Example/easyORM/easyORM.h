@@ -21,15 +21,18 @@ public:
     void init(QObject *obj) ;
 
 public slots:
-    void select();
+
     bool removeCurrentRow();
     bool removeAllRows();
     QJsonObject setCurrentRow(int index);
 
+    void select();
     bool update();
     bool insert();
+    bool where(QString condition);
     int rowCount() ;
     QJsonObject currentRowToJSON();
+
 private:
     QSqlTableModel *m_tableModel ;
     QObject *obj ;
