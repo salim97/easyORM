@@ -20,7 +20,7 @@ easyORM is easy library to create an equivalent of C++ class in SQL table ( sqli
     + [ ] add NOT NULL to cloumn
     + [ ] add auto fill to tableview of qml
     + [ ] Relation between two table
-    + [ ] return JSOn object after executing custom query
+    + [ ] return JSON object after executing custom query
     
 # SETUP
 -------
