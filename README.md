@@ -12,7 +12,7 @@ easyORM is easy library to create an equivalent of C++ class in SQL table ( sqli
 - Custom
     + [X] emit signal before inserting data to sql table
     + [X] emit signal after reading data from sql table
-    + [X] return JSOn Object when selecting row from table
+    + [X] return JSON Object when selecting row from table
     
 # TODO
 - QML & C++
