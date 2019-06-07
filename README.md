@@ -148,3 +148,7 @@ mydatabase.h contain generic function for database, (connecte, getAllTable, disc
 mypropertyhelper.h contain macro to make life easy when programing
 
 
+
+# Copyright © 2018-2019
+
+[Benabadji Mohammed Salim](https://github.com/salim97)
