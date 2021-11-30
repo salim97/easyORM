@@ -26,4 +26,5 @@
     private:\
     Q_OBJECT \
     public:\
-        CLASS_NAME() { init(this); }
+        CLASS_NAME() { init(this); } \
+        virtual ~CLASS_NAME() {};
